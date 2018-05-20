@@ -1,0 +1,200 @@
+body {
+    background-image: url("../images/light-grey-terrazzo.png");
+    width: 1200px;
+    height: 1080px;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    color: #777777;
+}
+
+#mypic {
+    transform: rotate(90deg);
+    height: 112.5px;
+    width: 150px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+header {
+    background: #ffffff;
+    width: 100%;
+    overflow: auto;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    border-bottom: 1px solid #cccccc;
+}
+
+nav {
+    background: #ffffff;
+    width: 960px;
+    margin: 10px;
+    position: relative;
+    left: 120px;
+    
+}
+
+section {
+    background: #ffffff;
+    width: 960px;
+    clear: both;
+    border: 1px solid #dddddd;
+    overflow: auto;
+    padding: 20px;
+    margin: 10px;
+    position: relative;
+    left: 120px;
+}
+
+#logo {
+    background: #4aaaa5;
+    float: left;
+    width: auto;
+    padding: 15px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.about {
+    position: relative;
+    left: 620px;
+    float: left;
+    margin: 10px;
+    color: #4aaaa5;
+}
+
+.contact {
+    position: relative;
+    left: 620px;
+    float: left;
+    margin: 10px;
+    color: #4aaaa5;
+}
+
+.portfolio {
+    position: relative;
+    left: 620px;
+    float: left;
+    margin: 10px;
+    color: #4aaaa5;
+}
+
+#aboutme {
+    color: #4aaaa5;
+    border-bottom: 2px solid #4aaaa5;
+    padding: 10px;
+}
+
+#projects {
+    color: #4aaaa5;
+    border-bottom: 2px solid #4aaaa5;
+    padding: 10px;
+}
+
+#contact {
+    color: #4aaaa5;
+    border-bottom: 2px solid #4aaaa5;
+    padding: 10px;
+}
+
+.contentfield {
+    margin: 10px;
+    width: 95%;
+    padding: 10px;
+}
+
+#message {
+    height: 100px;
+}
+
+#submit {
+    margin: 10px;
+    padding: 10px;
+    background: #4aaaa5;
+}
+
+.images {
+    float: left;
+    padding: 10px;
+    height: 165px;
+    width: 220px;
+}
+
+#clearimage {
+    clear: left;
+}
+
+footer {
+    background: #666666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 4px solid #4aaaa5;
+    height: 20px;
+    padding: 20px;
+    overflow: auto;
+    color: #ffffff;
+    text-align: center;
+    font-size: 8px;
+}
+
+@media only screen and (max-width: 980px) {
+
+
+}
+
+@media only screen and (max-width: 786px) {
+   body{
+       width: 786px;
+   }
+   .about {
+       position: relative;
+       left: 200px;
+   }
+   .portfolio {
+    position: relative;
+    left: 200px;
+}
+    .contact {
+    position: relative;
+    left: 200px;
+}
+
+section {
+    width: 70%;
+     margin: 10px;
+     position: relative;
+     left: 80px;
+}
+}
+
+@media only screen and (max-width: 640px) {
+    body{
+        width: 640px;
+    }
+    header{
+        width: 40%;
+    }
+    section {
+        width: 30%;
+         margin: 5px;
+         position: static;
+    }
+    nav{
+        width: 30%;
+        position: static;
+    }
+    #logo {
+        float: none;
+    }
+    .about {
+        position: static;
+    }
+    .contact{
+        position: static;
+    }
+    .portfolio{
+        position: static;
+    }
+    .images {
+        float: none;
+    }
+}
