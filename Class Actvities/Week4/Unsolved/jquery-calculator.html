@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<!-- Jumbotron for Title -->
+<div class="jumbotron">
+    <h1 class="text-center">jQuery Calculator</h1>
+    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+      <!-- Calculator Panel -->
+      <div class="col-lg-4">
+        <div class="card">
+          <h3 class="card-header">Calculator</h3>
+
+          <div class="card-body">
+            <button id="button-1" class="btn btn-primary number numBtn" value="1"><h1>1</h1></button>
+            <button id="button-2" class="btn btn-primary number numBtn" value="2"><h1>2</h1></button>
+            <button id="button-3" class="btn btn-primary number numBtn" value="3"><h1>3</h1></button>
+            <button id="button-plus" class="btn btn-danger operator oppBtn" value="plus"><h1>+</h1></button>
+            <br><br>
+            <button id="button-4" class="btn btn-primary number numBtn" value="4"><h1>4</h1></button>
+            <button id="button-5" class="btn btn-primary number numBtn" value="5"><h1>5</h1></button>
+            <button id="button-6" class="btn btn-primary number numBtn" value="6"><h1>6</h1></button>
+            <button id="button-minus" class="btn btn-danger operator oppBtn" value="minus"><h1>&minus;</h1></button>
+            <br><br>
+            <button id="button-7" class="btn btn-primary number numBtn" value="7"><h1>7</h1></button>
+            <button id="button-8" class="btn btn-primary number numBtn" value="8"><h1>8</h1></button>
+            <button id="button-9" class="btn btn-primary number numBtn" value="9"><h1>9</h1></button>
+            <button id="button-multiply" class="btn btn-danger operator oppBtn" value="times"><h1>&times;</h1></button>
+            <br><br>
+            <button id="button-0" class="btn btn-primary number numBtn" value="0"><h1>0</h1></button>
+            <button id="button-divide" class="btn btn-danger operator oppBtn" value="divide"><h1>&divide;</h1></button>
+            <button id="button-power" class="btn btn-danger operator oppBtn" value="power"><h1>^</h1></button>
+            <button id="button-equal" class="btn btn-success equal" id= "equals" value="equals"><h1>=</h1></button>
+            <br><br>
+            <button id="button-clear" class="btn btn-dark clear" id = "clear" value="clear"><h1>clear</h1></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Panel -->
+      <div class="col-lg-6">
+        <div class="card">
+          <h3 class="card-header">Result</h3>
+          <div class="card-body">
+            <h1 id="first-number"></h1>
+            <h1 id="operator"></h1>
+            <h1 id="second-number"></h1>
+            <hr>
+            <h1 id="result"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var results = "";
+var firstEntry = "";
+var secondEntry = "";
+var operation = "";
+
+$(".numBtn").on("click", function() {
+firstEntry = firstEntry  + this.value;
+console.log(firstEntry);
+$("#first-number").append(this.value);
+});
+  
+$(".oppBtn").on("click", function () {
+var operation = this.value;
+console.log(operation);
+switch (operation) {
+    case 'plus':
+          operation = "+";
+          $("#operator").append(operation);
+    break;
+    case 'minus':
+          operation = "-"
+          $("#operator").append(operation);
+    break;
+    case 'divide':
+          operation = "/"
+          $("#operator").append(operation);
+    break;
+    case 'times':
+          operation = "*"
+          $("#operator").append(operation);
+    break;
+    case 'power':
+          operation = "^"
+          $("#operator").append(operation);
+    break;
+}
+
+if (operation = "+" || "-" || "/" || "*" || "^") {
+$(".numBtn").on("click", function() {
+secondEntry = secondEntry  + this.value;
+console.log(secondEntry);
+$("#second-number").append(this.value);
+});
+}
+
+// $("#equals").on("click", function (){
+// parseInt(firstEntry);
+// parseInt(secondEntry);
+// switch (operation)
+// });
+
+$("#clear").on("click", function(){
+$("#first-number").html("");
+// first-entry = "";
+$("#operator").html("");
+// operation = "";
+$("#second-number").html("");
+// second-entry = "";
+// result = "";
+$("#result").html("")
+});
+
+});
+
+
+});
+
+</script>
+
+</body>
+</html>

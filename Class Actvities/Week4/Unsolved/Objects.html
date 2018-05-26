@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        $(document).on("click", function(event) {
+            console.log(event);
+        });
+
+        $(document).keyup(function(event) {
+            var myKey = event;
+            console.log("The key that was pressed was the " + event.key + " key.")
+        });
+
+
+        var students = {
+            "studentArray" : ["billy, dan"],
+        }
+        console.log(students)
+        console.log("Dan: " + students.studentArray)
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
