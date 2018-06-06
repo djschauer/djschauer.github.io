@@ -1,0 +1,59 @@
+<!-- Simple Timer -->
+<!-- Students: Your work lies in the last script tag -->
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Simple Timer</title>
+
+  </head>
+
+  <body>
+
+    <div id="time-left"></div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script>
+
+    
+      var audio = new Audio("https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90");
+      
+
+      setTimeout (fiveSeconds, 5000);
+      setTimeout (tenSeconds, 10000);
+      setTimeout (timeUp, 15000);
+
+      function fiveSeconds() {
+        alert("10 Seconds left");
+        console.log("10 Seconds Left!")
+        $("#time-left").append('<h1>10 Seconds left!<h1>')        
+      }
+
+
+      function tenSeconds() {
+      alert("5 Seconds left");
+      console.log("5 Seconds Left!")
+      $("#time-left").append("<h1>5 Seconds left!<h1>")  
+      }
+
+
+      function timeUp() {
+        alert("Time's Up!");
+        console.log("Time's Up!")
+        $("#time-left").append('<h1>Times Up!<h1>')         
+        audio.play();
+      }
+
+    </script>
+
+  </body>
+
+</html>
+
