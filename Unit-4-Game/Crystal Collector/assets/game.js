@@ -20,83 +20,27 @@ var blueCrystal = Math.floor(Math.random() * 11 + 1);
 var blackCrystal = Math.floor(Math.random() * 11 + 1);
 var greenCrystal = Math.floor(Math.random() * 11 + 1);
 
-var gameOver = false;
+// var gameOver = false;
 // Assign Crystal buttons
 $("#redCrystal").click(function() {
     playerScore = playerScore + redCrystal;
     $("#playerScore").text(playerScore);
-
-    // Win if statement: Alert Win, up the wins and write to doc, reset game
-if (playerScore === compNum) {
-    alert("You Win! Rematch?");
-    wins++;
-    reset();
-    $("#wins").text("Wins: " + wins);
-}
-// Lose if statement: Alert loss, up losses, write to doc, reset game
-if (playerScore > compNum) {
-    alert("You Lost! Try again!");
-    losses++;
-    reset();
-    $("#losses").text("Losses: " + losses);
-}
+    gameState()
 });
 $("#blueCrystal").click(function() {
     playerScore = playerScore + blueCrystal;
     $("#playerScore").text(playerScore);
-
-    // Win if statement: Alert Win, up the wins and write to doc, reset game
-if (playerScore === compNum) {
-    alert("You Win! Rematch?");
-    wins++;
-    reset();
-    $("#wins").text("Wins: " + wins);
-}
-// Lose if statement: Alert loss, up losses, write to doc, reset game
-if (playerScore > compNum) {
-    alert("You Lost! Try again!");
-    losses++;
-    reset();
-    $("#losses").text("Losses: " + losses);
-}
+    gameState()
 });
 $("#blackCrystal").click(function() {
     playerScore = playerScore + blackCrystal;
     $("#playerScore").text(playerScore);
-
-    // Win if statement: Alert Win, up the wins and write to doc, reset game
-if (playerScore === compNum) {
-    alert("You Win! Rematch?");
-    wins++;
-    reset();
-    $("#wins").text("Wins: " + wins);
-}
-// Lose if statement: Alert loss, up losses, write to doc, reset game
-if (playerScore > compNum) {
-    alert("You Lost! Try again!");
-    losses++;
-    reset();
-    $("#losses").text("Losses: " + losses);
-}
+    gameState()
 });
 $("#greenCrystal").click(function() {
     playerScore = playerScore + greenCrystal;
     $("#playerScore").text(playerScore);
-
-    // Win if statement: Alert Win, up the wins and write to doc, reset game
-if (playerScore === compNum) {
-    alert("You Win! Rematch?");
-    wins++;
-    reset();
-    $("#wins").text("Wins: " + wins);
-}
-// Lose if statement: Alert loss, up losses, write to doc, reset game
-if (playerScore > compNum) {
-    alert("You Lost! Try again!");
-    losses++;
-    reset();
-    $("#losses").text("Losses: " + losses);
-}
+    gameState()
 });
 
 // Game Reset function
@@ -112,47 +56,24 @@ function reset() {
     // Reset Score to 0, write to doc
     playerScore = 0;
     $("#playerScore").text(playerScore);
-    gameOver = false;
+    // gameOver = false;
 }
-
-// EXPERIMENTAL CODE BELOW (Attempting to clean up my buttons)
-
-// Win if statement: Alert Win, up the wins and write to doc, reset game
-// if (playerScore === compNum) {
-//     alert("You Win! Rematch?");
-//     wins++;
-//     reset();
-// }
-// Lose if statement: Alert loss, up losses, write to doc, reset game
-// if (playerScore > compNum) {
-//     alert("You Lost! Try again!");
-//     losses++;
-//     reset();
-// }
-
-// if (playerScore >= compNum) {
-//     gameOver = true;
-// }
-
-// if (gameOver) {
-//     console.log("The game is afoot!")
-// }
-// else if (playerScore === compNum) {
-//     alert("You Win! Rematch?");
-//     wins++;
-//     reset();
-//     $("#wins").text("Wins: " + wins);
-// } else { 
-//     alert("You Lost! Try again!");
-//     losses++;
-//     reset();
-//     $("#losses").text("Losses: " + losses);
-// }
-
-
-// defunct win function
-// function win() {
-//     alert("You Win! Rematch?")
-// }
+// Function to check if the game is over
+function gameState() {
+    // Win if statement: Alert Win, up the wins and write to doc, reset game
+    if (playerScore === compNum) {
+    alert("You Win! Rematch?");
+    wins++;
+    reset();
+    $("#wins").text("Wins: " + wins);
+    }
+    // Lose if statement: Alert loss, up losses, write to doc, reset game
+    if (playerScore > compNum) {
+    alert("You Lost! Try again!");
+    losses++;
+    reset();
+    $("#losses").text("Losses: " + losses);
+    }
+}
 
 });
