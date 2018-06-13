@@ -1,1 +1,2 @@
-# djschauer.github.io
+# Hangman
+Hangman Game

@@ -3,20 +3,140 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Git Webpage</title>
+    <title>Odin's Noose</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>-->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Welcome to my little corner of the Internet</h1>
-    <div>
-        <p>
-            All you can do right now is read this text, but maybe in the future there will be more for you to see.
-        </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                    <h1>Odin's Noose</h1>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row"><br></div>
+        <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="Assets/Images/Noose.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h3 class="card-title">How to Play</h3>
+                    <p class="card-text">
+                        Press keys on the keyboard to try and guess the word! Good Luck!
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <!-- <li class="list-group-item" id= "wins"> -->
+                        <!-- Wins: -->
+                    <!-- </li> -->
+                    <!-- <li class="list-group-item" id= "losses"> -->
+                        <!-- Losses: -->
+                    <!-- </li> -->
+                    <li class="list-group-item" id= "guessesRemaining">
+                        Mistakes Remaining: 9
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h3 class="card-title">Word to Guess</h3>
+                        <p class="card-text" id= "chosenWord">
+                        
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Letters Guessed
+                        </li>
+                        <li class="list-group-item" id="lettersGuessed">
+                            
+                        </li>
+                    </ul>
+                </div>
+                </div>
+        <div class="col-md-3"></div>
+        
     </div>
-    <div>
-        Cheers, Dan
-    </div>
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+    var wordBank = [
+        "valkyrie", 
+        "odin", 
+        "thor", 
+        "jormungandr", 
+        "loki", 
+        "worldtree", 
+        "meadhall", 
+        "valhalla", 
+        "bragr", 
+        "skald", 
+        "longship", 
+        "vinlandsaga", 
+        "jotunheim", 
+        "midgard", 
+        "tyr", 
+        "fenrir"
+        ];
+
+    var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    var answer = [];
+    var guessesRemaining = 9;
+    var wordComplete = false;
+    var remainingLetters = chosenWord.length;
+    // var wins = 0;
+    // var losses = 0;
+
+    for (var i = 0; i < chosenWord.length; i++) {
+        answer[i] = " _ ";
+        $("#chosenWord").append(answer[i]);
+    }
+
+        document.onkeyup = function(event) {
+            var userGuess = event.key;
+            $("#lettersGuessed").append(userGuess + " ");
+            var correctLetter = false;
+            for (var i = 0; i < answer.length; i++){
+                if (chosenWord[i] === userGuess) {
+                    answer[i] = userGuess;
+                    $("#chosenWord").text(answer);
+                    correctLetter = true;
+                    remainingLetters--
+                }
+                
+                if (remainingLetters === 0) {
+                    wordComplete = true;
+                }
+
+                }
+            if (correctLetter === false) {
+                guessesRemaining--;
+                console.log(guessesRemaining);
+                $("#guessesRemaining").text("Mistakes Remaining: " + guessesRemaining);
+            }
+            if (guessesRemaining === 0) {
+                $("#chosenWord").text(chosenWord)
+                alert("Odin has taken your life as repentence for your failure! (refresh to start over)")
+            // losses++
+            }
+        
+            if (wordComplete) {
+                $("#chosenWord").text(chosenWord)
+                alert("You have solved the great word puzzle. You may join Odin and his Valkyrie in the great mead halls of Valhalla! (refresh to play again!)")
+            }
+        }
+
+    });
+    
+    </script>
 </body>
 </html>
