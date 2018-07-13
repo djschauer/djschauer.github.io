@@ -5,10 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dan's Github</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+    <script src="assets/app.js"></script>
 </head>
 <body>
+    <div id = "nav">
+        <nav>
+            <div class="nav-wrapper black">
+              <a href="#" class="brand-logo">Daniel Schauer</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a class="modal-trigger" href="#contactModal">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div id = "about">
+      
+    </div>
+    <div id = "portfolio">
+
+    </div>
     
+    
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+          <h4>Contact Me</h4>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn red darken-4">Send        <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+        </div>
+      </div>
 </body>
 </html>
