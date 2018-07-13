@@ -1,0 +1,19 @@
+.navText:hover {
+    color: firebrick;
+    text-underline-position: below;
+}
+
+#portfolioBar {
+    background-color: firebrick;
+}
+
+#aboutBar {
+    background-color: firebrick;
+}
+
+#imageMe {
+    transform: rotate(90deg);
+    height: 100px;
+    width: auto;
+    float: left;
+}
