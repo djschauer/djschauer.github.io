@@ -1,4 +1,6 @@
-require
+var TV = require("./tv");
+
+var tv = new TV();
 
 // var args = process.argv;
 
@@ -39,18 +41,26 @@ var searchArray = argArray.slice(2);
 
 var searchCmd = searchArray[0];
 var searchKeys = searchArray.slice(1);
-console.log(searchArray);
-console.log(searchKeys);
-console.log(argArray);
 
+keysArray = [];
+var keywords = "";
+
+function parseKeywords(keys) {
+    keys.forEach(element => {
+        keysArray.push(element);
+    });
+    keywords = keysArray.join(", ")
+}
 
 function parseSearchTerm(term) {
     switch (term) {
         case "show":
-        console.log("Search for Show.");
+        console.log("Searching for Show: " + keywords);
+        tv.findShow(keywords);
         break;
         case "actor":
-        console.log("Search for Actor.");
+        console.log("Searching for Actor: " + keywords);
+        tv.findActor(keywords);
         break;
         default:
         console.log("Unknown command.")
@@ -58,11 +68,5 @@ function parseSearchTerm(term) {
     }
 }
 
-function parseKeywords(keys) {
-    keys.forEach(element => {
-        console.log(element);
-    });
-}
-
-parseSearchTerm(searchCmd);
 parseKeywords(searchKeys);
+parseSearchTerm(searchCmd);
