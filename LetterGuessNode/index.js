@@ -24,14 +24,13 @@ var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 var guessesRemaining = 9;
 var wordComplete = false;
 var lettersGuessed = [];
+var alreadyGuessed = false;
 
-var newWord = new Word(chosenWord);
-
-newWord.fillBlanks(newWord.word);
+var newWord = ""
 
 
 function gameStart() {
-    var newWord = new Word(chosenWord);
+    newWord = new Word(chosenWord);
     newWord.fillBlanks(newWord.word);
     newWord.createLetters(newWord.word);
     // console.log(newWord.letters);
@@ -53,7 +52,6 @@ function gameStart() {
             console.log("You have guessed: " + JSON.stringify(lettersGuessed)) + " so far";
             newWord.fillCurrentState(userLetter);
             console.log(newWord.currentState);
-            // newWord.letterGuess();
             guessLetter();  
         });
     }
@@ -69,8 +67,13 @@ function guessLetter() {
         ]
     ).then(function(answers) {
             var userLetter = answers.userGuess;
+            alreadyGuessed = false;
             lettersGuessed.forEach(element => {
-                if (userLetter === element)  {
+                if (userLetter === element) {
+                    alreadyGuessed = true;
+                }
+            });
+                if (alreadyGuessed)  {
                     console.log("You have already guessed that mortal. You try Odin's patience!");
                     console.log("You have guessed: " + JSON.stringify(lettersGuessed)) + " so far";
                     guessLetter();
@@ -80,9 +83,8 @@ function guessLetter() {
                     console.log("The Current Word: " + newWord.currentState);
                     console.log("You have guessed: " + JSON.stringify(lettersGuessed)) + " so far";
                     guessLetter();
-                }
+                }               
             });            
-    });
-};
+    };
 
 gameStart()

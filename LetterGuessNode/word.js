@@ -30,6 +30,7 @@ function Word(word) {
             } else {
                 this.currentState.push("_");
             }
+            console.log(this.currentState)
         });
     }
 };
