@@ -56,7 +56,7 @@ function gameStart() {
             newWord.currentState.forEach(element => {
                 if (element === "_") {
                     remainingLetters++
-                }
+                };
             });
             guessLetter();  
         });
@@ -78,7 +78,7 @@ function guessLetter() {
             lettersGuessed.forEach(element => {
                 if (userLetter === element) {
                     alreadyGuessed = true;
-                }
+                };
             });
                 if (alreadyGuessed)  {
                     console.log("You have already guessed that mortal. You try Odin's patience!");
@@ -95,20 +95,23 @@ function guessLetter() {
                         }
                     });
                     if (remainingLetters === 0) {
-                        wordComplete === true;
-                    };
-                    if (wordComplete === true) {
+                        wordComplete = true;
+                        endGame();
+                    } else if (guessesRemaining === 0) {
                         endGame();
                     } else {
                         guessLetter();
                     };
-                }               
+                };               
             });            
     };
 
 function endGame() {
     if (wordComplete === true) {
         console.log("Congratulations hero! You have beaten Odin's game.");
+        playAgain();
+    } else {
+        console.log("You have failed your test mortal.")
         playAgain();
     }
 }
@@ -124,7 +127,11 @@ function playAgain() {
             }
         ]
     ).then(function(answers) {
-        
+        if (answers.userConfirm) {
+            gameStart();
+        } else {
+            console.log("Odin's challeng awaits you until next time.")
+        }
     });
 }
 
