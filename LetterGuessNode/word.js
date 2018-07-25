@@ -27,9 +27,9 @@ function Word(word) {
             } else {
                 this.currentState.push("_");
             }
-            console.log(this.currentState);
         });
-    }
+        console.log(this.currentState);
+    };
 };
 
 module.exports = Word

@@ -21,13 +21,13 @@ var wordBank = [
     ];
 
 var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-var guessesRemaining = 9;
+var guessesRemaining = 0;
 var wordComplete = false;
 var lettersGuessed = [];
 var alreadyGuessed = false;
 var remainingLetters = 0;
 
-var newWord = ""
+var newWord = "";
 
 
 function gameStart() {
@@ -94,10 +94,11 @@ function guessLetter() {
                             remainingLetters++
                         }
                     });
+                    guessesRemaining = lettersGuessed.length;
                     if (remainingLetters === 0) {
                         wordComplete = true;
                         endGame();
-                    } else if (guessesRemaining === 0) {
+                    } else if (guessesRemaining === 9) {
                         endGame();
                     } else {
                         guessLetter();
