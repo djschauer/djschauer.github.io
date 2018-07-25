@@ -25,6 +25,7 @@ var guessesRemaining = 9;
 var wordComplete = false;
 var lettersGuessed = [];
 var alreadyGuessed = false;
+var remainingLetters = 0;
 
 var newWord = ""
 
@@ -33,7 +34,7 @@ function gameStart() {
     newWord = new Word(chosenWord);
     newWord.fillBlanks(newWord.word);
     newWord.createLetters(newWord.word);
-    // console.log(newWord.letters);
+    remainingLetters = newWord.letters.length;
     console.log("Welcome to Hangman, sponsored by Odin.")
     console.log("The All-Father has prepared words for you to guess in the hopes a true hero may challenge his wit.")
     console.log("Follow the prompts below to make your guesses. You will only be allowed to guess wrong nine times. My the grace of Odin be with you!")
@@ -52,6 +53,11 @@ function gameStart() {
             console.log("You have guessed: " + JSON.stringify(lettersGuessed)) + " so far";
             newWord.fillCurrentState(userLetter);
             console.log(newWord.currentState);
+            newWord.currentState.forEach(element => {
+                if (element === "_") {
+                    remainingLetters++
+                }
+            });
             guessLetter();  
         });
     }
@@ -68,6 +74,7 @@ function guessLetter() {
     ).then(function(answers) {
             var userLetter = answers.userGuess;
             alreadyGuessed = false;
+            remainingLetters = 0;
             lettersGuessed.forEach(element => {
                 if (userLetter === element) {
                     alreadyGuessed = true;
@@ -82,9 +89,43 @@ function guessLetter() {
                     newWord.fillCurrentState(userLetter);
                     console.log("The Current Word: " + newWord.currentState);
                     console.log("You have guessed: " + JSON.stringify(lettersGuessed)) + " so far";
-                    guessLetter();
+                    newWord.currentState.forEach(element => {
+                        if (element === "_") {
+                            remainingLetters++
+                        }
+                    });
+                    if (remainingLetters === 0) {
+                        wordComplete === true;
+                    };
+                    if (wordComplete === true) {
+                        endGame();
+                    } else {
+                        guessLetter();
+                    };
                 }               
             });            
     };
+
+function endGame() {
+    if (wordComplete === true) {
+        console.log("Congratulations hero! You have beaten Odin's game.");
+        playAgain();
+    }
+}
+
+function playAgain() {
+    inquirer.prompt (
+        [
+            {
+                name: "userConfirm",
+                type: "confirm",
+                message: "Would you like to play again?",
+                default: false
+            }
+        ]
+    ).then(function(answers) {
+        
+    });
+}
 
 gameStart()

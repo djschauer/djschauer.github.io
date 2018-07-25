@@ -7,7 +7,6 @@ function Word(word) {
     this.currentState = [];
     this.fillBlanks = function(wordSplit) {
         var wordArray = wordSplit.split("");
-        // console.log(this.letters);
         for (var i = 0; i < wordArray.length; i++) {
             this.blanks.push("_");
         };
@@ -16,7 +15,6 @@ function Word(word) {
         var wordArray = wordSplit.split("");
         wordArray.forEach(element => {
             element = new Letter(element);
-            console.log(element);
             this.letters.push(element);
         });
     }
@@ -24,13 +22,12 @@ function Word(word) {
         this.currentState = [];
         this.letters.forEach(element => {
             element.guess(char);
-            console.log(element);
             if (element.letterGuessed === true) {
                 this.currentState.push(element.letter);
             } else {
                 this.currentState.push("_");
             }
-            console.log(this.currentState)
+            console.log(this.currentState);
         });
     }
 };
