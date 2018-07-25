@@ -1,18 +1,16 @@
-function Letter(character) {
-    this.letter = character;
+function Letter(char) {
+    this.letter = char;
     this.letterGuessed = false;
     this.showLetter = function() {
         if (this.letterGuessed === true) {
-            console.log(this.character);
-        } else {
-            console.log("_");
-        }
-    }
+            console.log("You guessed correctly: " + this.letter);
+        };
+    };
     this.guess = function(char) {
         if (char === this.letter) {
             this.letterGuessed = true;
-        }
-    }
+        };
+    };
 };
 
-module.exports = Letter
+module.exports = Letter;

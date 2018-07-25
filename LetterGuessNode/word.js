@@ -1,34 +1,37 @@
-var letter = require("./letter.js");
+var Letter = require("./letter.js");
 
-var testWord = new Word ("Thor");
-var testGuess = "a";
-var testGuess2 = "h";
-
-function Word(wordGuess) {
-    this.wordGuess = wordGuess;
+function Word(word) {
+    this.word = word;
     this.letters = [];
     this.blanks = [];
+    this.currentState = [];
     this.fillBlanks = function(wordSplit) {
-        this.letters = wordSplit.split("");
-        console.log(this.letters);
-        for (var i = 0; i < this.letters.length; i++) {
+        var wordArray = wordSplit.split("");
+        // console.log(this.letters);
+        for (var i = 0; i < wordArray.length; i++) {
             this.blanks.push("_");
         };
-
-
     };
-    this.letterGuess = function(char) {
+    this.createLetters = function(wordSplit) {
+        var wordArray = wordSplit.split("");
+        wordArray.forEach(element => {
+            element = new Letter(element);
+            console.log(element);
+            this.letters.push(element);
+        });
+    }
+    this.fillCurrentState = function(char) {
+        this.currentState = [];
         this.letters.forEach(element => {
-            newLetter = new letter.Letter(element);
-            newLetter.guess(char);
+            element.guess(char);
+            console.log(element);
+            if (element.letterGuessed === true) {
+                this.currentState.push(element.letter);
+            } else {
+                this.currentState.push("_");
+            }
         });
     }
 };
-console.log(testWord.wordGuess);
-
-testWord.fillBlanks(testWord.wordGuess);
-
-testWord.letterGuess(testGuess);
-testWord.letterGuess(testGuess2);
 
 module.exports = Word
