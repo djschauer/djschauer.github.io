@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>view</title>
+   <!--Bootstrap-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+       crossorigin="anonymous">
+       <!-- icons-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+       rel="stylesheet">
+         <!-- Latest compiled and minified CSS & JS -->
+
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://code.jquery.com/jquery.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+       <p>
+               <a href="#">API Table Link</a>
+               |
+               <a href="#">API Wait List</a>
+               </p>
+   <div class="jumbotron">
+       <h1 class="display-4">Hot Restaurant</h1>
+       <p class="lead">Current Reservations and Waiting List
+           </p>
+       <hr class="my-4">
+     
+       <a class="btn btn-danger btn-lg" href="/make" role="button"><i class="material-icons">
+               credit_card
+               </i>Make Reservation</a>
+       <a class="btn btn-primary btn-md" href="/" role="button"> <i class="material-icons">
+               home
+               </i> Home </a>
+   </div>
+
+   <div class="panel panel-default">
+       <div class="panel-heading">
+         <h3 class="panel-title"><strong>Reservations</strong></h3>
+       </div>
+       <div class="panel-body">
+         <div class="well">
+           <h2 id="name"></h2>
+
+           </div>
+         </div>
+       </div>
+     </div>
+
+   <script type="text/javascript">
+       $.get("/api/reservations/", function(data) {
+       console.log(data);
+       for(var i = 0; i < data.length; i++) {
+            console.log(data);
+            newDiv = $("<div>");
+            newHead = $("<h1>");
+            newHead.html((i + 1) + " | " + data[i].name);
+            newDiv.append(newHead);
+            $("#name").html(newDiv);
+       };
+
+       data.forEach((element, i) => {
+            console.log(index);
+            newDiv = $("<div>");
+            newHead = $("<h1>");
+            newHead.html((i + 1) + " | " + element.name);
+            newDiv.append(newHead);
+            $("#name").html(newDiv);
+        });
+     });
+
+   </script>
+</body>
