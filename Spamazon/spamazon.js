@@ -48,77 +48,7 @@ var connection = mysql.createConnection({
   function buyMode() {
         console.log("These are the items currently available");
         displayInventory();
-        inquirer.prompt(
-            [
-                {
-                    name: "item",
-                    type: "input",
-                    message: "What item would you like to buy?"
-                },
-                {
-                    name: "quantity",
-                    type: "input",
-                    message: "How many would you like?"
-                }
-            ]
-        ).then(function(answers) {
-            var itemID = answers.item;
-            var amount = answers.quantity;
-            connection.query("SELECT * FROM inventoryCatalog WHERE ?", 
-            {
-                id: itemID
-            }, function(err, res) {
-                if (err) throw err;
-                console.log("Processing Order");
-                var item = res[0];
-                var itemStock = item.stock;
-                var itemPrice = item.price;
-                var productSold = item.productSold;
-
-                console.log(itemStock);
-                
-                if (res.length === 0) {
-                    console.log("There are no products with that ID. Please select a valid product ID");
-                    buyMode();
-                } else if (itemStock < amount) {
-                    console.log("There are not enough items in stock for you to purchase that. Please either select a new item, or buy less.");
-                    } else {
-                        console.log("Placing Order");
-                        connection.query("UPDATE inventoryCatalog SET ? WHERE ?",
-                    [ 
-                        {
-                            stock: itemStock - amount,
-                            productSold: productSold + amount                        
-                        },
-                        {
-                            id: itemID
-                        }
-                    ], function (err, res) {
-                        if (err) throw err;
-
-                        console.log("Your order has been placed.")
-                        console.log("You have been charged: " + (amount * itemPrice));
-                        displayInventory();
-                        inquirer.prompt(
-                            [
-                                {
-                                    name: "buyagain",
-                                    type: "confirm",
-                                    message: "Would you like to continue shopping?",
-                                    default: true
-                                }
-                            ]
-                        ).then(function(answers){
-                            if (answers) {
-                                buyMode();
-                            } else {
-                                process.exit();
-                            }
-                        });
-                    });
-                }
-            });
-        });
+        buyItem();
   };
 
   function inventoryMode() {
@@ -134,3 +64,77 @@ var connection = mysql.createConnection({
         table.draw(res);
     });
   };
+
+  function buyItem() {
+    inquirer.prompt(
+        [
+            {
+                name: "item",
+                type: "input",
+                message: "What item would you like to buy?"
+            },
+            {
+                name: "quantity",
+                type: "input",
+                message: "How many would you like?"
+            }
+        ]
+    ).then(function(answers) {
+        var itemID = answers.item;
+        var amount = answers.quantity;
+        connection.query("SELECT * FROM inventoryCatalog WHERE ?", 
+        {
+            id: itemID
+        }, function(err, res) {
+            if (err) throw err;
+            console.log("Processing Order");
+            var item = res[0];
+            var itemStock = item.stock;
+            var itemPrice = item.price;
+            var productSold = item.productSold;
+
+            console.log(itemStock);
+            
+            if (res.length === 0) {
+                console.log("There are no products with that ID. Please select a valid product ID");
+                buyMode();
+            } else if (itemStock < amount) {
+                console.log("There are not enough items in stock for you to purchase that. Please either select a new item, or buy less.");
+                } else {
+                    console.log("Placing Order");
+                    connection.query("UPDATE inventoryCatalog SET ? WHERE ?",
+                [ 
+                    {
+                        stock: itemStock - amount,
+                        productSold: productSold + amount                        
+                    },
+                    {
+                        id: itemID
+                    }
+                ], function (err, res) {
+                    if (err) throw err;
+
+                    console.log("Your order has been placed.")
+                    console.log("You have been charged: " + (amount * itemPrice));
+                    displayInventory();
+                    inquirer.prompt(
+                        [
+                            {
+                                name: "buyagain",
+                                type: "confirm",
+                                message: "Would you like to continue shopping?",
+                                default: true
+                            }
+                        ]
+                    ).then(function(answers){
+                        if (answers.buyagain) {
+                            buyMode();
+                        } else {
+                            process.exit();
+                        }
+                    });
+                });
+            }
+        });
+    });
+  }
