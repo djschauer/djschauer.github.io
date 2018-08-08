@@ -4,12 +4,14 @@ var friends = require('./friends.js')
 
 var api = {
     getFriends: function(app) {
-        app.get('api/friends', function(req, res) {
+        app.get('/api/friends', function(req, res) {
             res.json(friends);
+            console.log("serving up the friends list");
         });
     },
     postFriends: function(app) {
-        app.post('api/friends', function(req, res) {
+        app.post('/api/friends', function(req, res) {
+            console.log("finding new match");
             var userInput = req.body;
 
             var userScores = userInput.scores;

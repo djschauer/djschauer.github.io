@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Friend Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -17,11 +17,22 @@
           <a href="/" class="brand-logo center">Friend Finder</a>
         </div>
       </nav>
+      <div class ="container">
+          <div class="row">
+              <div class="col s3">
+              </div>
+              <div class="col s6">
+                  <h3><strong>Survey</strong></h3>
+              </div>
+              <div class="col s3"></div>
+          </div>
+      </div>
       <div class="container">
             <div class = "row">
                     <div class = "col-sm-3"></div>
                     <div class = "input-field col s6">
-                        
+                            <input placeholder="Placeholder" id="name" type="text" class="validate">
+                            <label for="name">Your Name</label>
                     </div>
                     <div class = "col-sm-3"></div>
             </div>
@@ -169,7 +180,7 @@
               <p>
                     <strong>Question 9:</strong> Winning a debate matters less to you than making sure no one gets upset.
                 </p>
-                      <select id = "9">
+                      <select id = "q9">
                               <option value="" disabled selected>Neutral</option>
                               <option value="1">Strongly Agree</option>
                               <option value="2">Agree</option>
@@ -215,7 +226,7 @@
               <p id="match"></p>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+              <a href="/survey" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
           </div>
 </body>
@@ -225,9 +236,11 @@
 
         $('#submitBtn').on('click', function(event) {
             event.preventDefault();
-            
+            console.log("pressed");
+            console.log($('#name').val().trim());
+
 			var userInput = {
-				name: $('#userName').val().trim(),
+				name: $('#name').val().trim(),
 				scores:[
 					$('#q1').val().trim(),
 					$('#q2').val().trim(),
@@ -246,7 +259,7 @@
       			
       			$('#match').html(data.matchName);
 		    	
-      			$('#modal1').modal('open');
+      			$('.modal').modal();
       		});
   });
 
