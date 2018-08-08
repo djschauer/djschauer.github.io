@@ -7,7 +7,7 @@ var html = {
         });
     },
     getSurvey: function(app) {
-        app.get('/', function(req, res) {
+        app.get('/survey', function(req, res) {
             res.sendFile(path.join(__dirname, '/survey.html'))
         })
     }

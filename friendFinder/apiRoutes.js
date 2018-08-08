@@ -1,6 +1,6 @@
 var path = require('path');
 
-var friends = require('/friends.js')
+var friends = require('./friends.js')
 
 var api = {
     getFriends: function(app) {
