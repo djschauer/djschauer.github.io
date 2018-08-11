@@ -42,7 +42,7 @@ $(document).ready(function() {
     $.ajax({
       method: "DELETE",
       url: "/api/todos/" + id
-    }).then(getTodos);
+    }).then(getTodos())
   }
 
   // This function handles showing the input box for a user to edit a todo
@@ -79,7 +79,7 @@ $(document).ready(function() {
       method: "PUT",
       url: "/api/todos",
       data: todo
-    }).then(getTodos);
+    }).then(getTodos());
   }
 
   // This function is called whenever a todo item is in edit mode and loses focus

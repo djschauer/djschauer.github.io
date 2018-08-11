@@ -1,10 +1,7 @@
-var sequelize = require("sequelize");
-
-const Todo = sequelize.define('todo', {
-    text: {
-        type: sequelize.STRING
-    },
-    complete: {
-        type: sequelize.BOOLEAN
-    }
-});
+module.exports = function(sequelize, DataTypes) {
+    var Todo = sequelize.define("Todo", {
+      text: DataTypes.STRING,
+      complete: DataTypes.BOOLEAN
+    });
+    return Todo;
+  };
