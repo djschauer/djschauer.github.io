@@ -234,6 +234,10 @@
     $(document).ready(function(){
         $('select').formSelect();
 
+        $('.modal').modal();
+
+        // var instance = M.Modal.getInstance(elem)
+
         $('#submitBtn').on('click', function(event) {
             event.preventDefault();
             console.log("pressed");
@@ -259,7 +263,7 @@
       			
       			$('#match').html(data.matchName);
 		    	
-      			$('.modal').modal();
+      			$('.modal').modal('open');
       		});
   });
 
