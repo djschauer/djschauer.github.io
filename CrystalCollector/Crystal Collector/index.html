@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crystal Collector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="assets/game.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="gameTitle">Crystal Collector Game</h1>
+    </header>
+    <div id="instructions">
+        <h3>How to play:</h3>
+        <p>
+            The computer will generate a random number from 19-120.
+        </p>
+        <p>
+            You must get your score to match the computers by clicking on the crystals. Each crystal will increase your score by a different amount.
+        </p>
+        <p>
+            Good luck!
+        </p>
+    </div>
+    <div id="compNumDiv">
+        <h2>Computer's Number</h2>
+        <h2 id="compNum">0</h2>
+    </div>
+    <div id="playerScoreDiv">
+        <h2>Your Score</h2>
+        <h2 id="playerScore"></h2>
+    </div>
+    <br>
+    <div class=crystals>
+        <div class= "redDiv" id="redCrystal">
+            <img src="assets/Images/redcrystal.jpg" class="image" id="redImage">
+        </div>
+        <div class= "blueDiv" id="blueCrystal">
+            <img src="assets/Images/bluecrystal.jpg" class="image" id="blueImage">
+        </div>
+        <div class= "greenDiv" id="greenCrystal">
+            <img src="assets/Images/greencrystal.jpg" class="image" id="greenImage">
+        </div>
+        <div class= "blackDiv" id="blackCrystal">
+            <img src="assets/Images/blackcrystal.jpg" class="image" id="blackImage">
+        </div>
+    </div>
+    <div id="winsLosses">
+        <div id="wins">
+            <h4></h4>
+        </div>
+        <div id="losses">
+            <h4></h4>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.gifBtn {
+    float: left;
+    margin: 2px;
+}
+
+#inputDiv {
+    float: right;
+}
+
+.giffy {
+    clear: both;
+    margin: 10px;
+}
+
+#gifsDiv {
+    clear: both;
+}
+
+/* .form-group {
+    float: right;
+}
+
+.btn {
+    float: right;
+} */
